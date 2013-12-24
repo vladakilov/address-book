@@ -1,0 +1,19 @@
+{
+    "name": "addressbook",
+    "version": "0.0.0",
+    "authors": [
+        "Vlad Akilov <vlad.akilov@gmail.com>"
+    ],
+    "description": "Address Book app with Backbone",
+    "main": "app.js",
+    "keywords": [
+        "backbone"
+    ],
+    "license": "MIT",
+    "homepage": "github.com/vladakilov",
+    "dependencies": {
+        "jquery": "~2.0.3",
+        "underscore": "~1.5.2",
+        "backbone": "~1.1.0"
+    }
+}

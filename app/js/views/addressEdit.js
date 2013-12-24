@@ -3,7 +3,8 @@
 (function(app) {
 
     var addressEdit = Backbone.View.extend({
-
+        tagName: "form",
+        
         initialize: function(id) {
             this.address = app.addressBook.get(id);
             app.ui.$content.html(this.render().el);

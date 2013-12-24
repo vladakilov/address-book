@@ -20,7 +20,7 @@
         </div>
 
         <script type="text/template" id="address-table">
-            <table id="address-list">
+            <table>
                 <thead>
                     <tr>
                         <td>First Name</td>
@@ -57,39 +57,29 @@
 
         <script type="text/template" id="address-form">
             <form>
-                <div class="control-group">
-                    <input type="text" class="input-block-level" name="first-name" placeholder="First Name" value="<%= firstName %>"/>
+                <div>
+                    <input type="text" name="first-name" placeholder="First Name" value="<%= firstName %>"/>
                 </div>
-                <div class="control-group">
-                    <input type="text" class="input-block-level" name="last-name" placeholder="Last Name" value="<%= lastName %>"/>
+                <div>
+                    <input type="text" name="last-name" placeholder="Last Name" value="<%= lastName %>"/>
                 </div>
-                <div class="control-group">
-                    <input type="text" class="input-block-level" name="email" placeholder="Email" value="<%= email %>"/>
+                <div>
+                    <input type="text" name="email" placeholder="Email" value="<%= email %>"/>
                 </div>
-                <div class="control-group">
-                    <input type="text" class="input-block-level" name="phone" placeholder="Phone" value="<%= phone %>"/>
+                <div>
+                    <input type="text" name="phone" placeholder="Phone" value="<%= phone %>"/>
                 </div>
-                <div class="form-actions">
+                <div>
                     <button class="save" type="submit">Save</button> or
                     <a href="#address/index">Cancel</a>
                 </div>
             </form>
         </script>
 
-        <script src="js/libs/jquery-2.0.3.js"></script>
-        <script src="js/libs/underscore-1.5.2.js"></script>
-        <script src="js/libs/backbone-1.1.0.js"></script>
-        <script src="js/router.js"></script>
-        <script src="js/models/address.js"></script>
-        <script src="js/collections/addressBook.js"></script>
-        <script src="js/views/addressIndex.js"></script>
-        <script src="js/views/addressShow.js"></script>
-        <script src="js/views/addressRow.js"></script>
-        <script src="js/views/addressCreate.js"></script>
-        <script src="js/views/addressEdit.js"></script>
-        <script src="js/app.js"></script>
+        <script src="build/js/libs.js"></script>
+        <script src="build/js/app.js"></script>
         <script>
-            $(function(){
+            $(document).ready(function() {
                 app.init();
             });
         </script>

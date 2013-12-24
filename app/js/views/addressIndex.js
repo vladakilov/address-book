@@ -4,8 +4,15 @@
 
     var addressIndex = Backbone.View.extend({
 
+        tagName: "table",
+
+        id: "address-list",
+
         initialize: function() {
-            app.ui.$content.html(this.render().el);
+            app.ui.$content.html("");
+            if (app.addressBook.length) {
+                app.ui.$content.html(this.render().el);
+            }
             this.addAll();
         },
 
@@ -26,7 +33,6 @@
 
         addAll: function() {
             var self = this;
-            this.$el.find('tbody').children().remove();
             app.addressBook.each(function(address) {
                 self.addOne(address);
             });

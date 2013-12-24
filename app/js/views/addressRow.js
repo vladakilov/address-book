@@ -11,17 +11,20 @@
         },
 
         initialize: function(){
-            this.model.on('remove', this.remove, this);
+            this.model.on("remove", this.remove, this);
             this.render;
         },
 
         render: function() {
-            this.$el.html(_.template($('#address-row').html(), this.model.toJSON()));
+            this.$el.html(_.template($("#address-row").html(), this.model.toJSON()));
             return this;
         },
 
         delete: function() {
             app.addressBook.remove(this.model);
+            if (!app.addressBook.length) {
+                $("#address-list").remove();
+            }
         }
 
     });

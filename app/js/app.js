@@ -11,12 +11,16 @@ var app = (function(app) {
         };
     }
 
+    function initializeApp() {
+        app.addressBook = new app.collection.addressBook();
+        app.Router = new app.router();
+        Backbone.history.start();
+    }
+
     var _app = {
         init: function() {
             initializeUiCache();
-            app.addressBook = new app.collection.addressBook();
-            app.Router = new app.router();
-            Backbone.history.start();
+            initializeApp();
         }
     }
 

@@ -3,6 +3,7 @@
 (function(app) {
 
     var addressCreate = Backbone.View.extend({
+        tagName: "form",
 
         initialize: function() {
             this.address = new app.model.address();
@@ -10,7 +11,7 @@
         },
 
         render: function() {
-            this.$el.html(_.template($('#address-form').html(), this.address.toJSON()));
+            this.$el.html(_.template($("#address-form").html(), this.address.toJSON()));
             return this;
         },
 
