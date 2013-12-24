@@ -6,17 +6,19 @@
 
         tagName: "tr",
 
+        template: _.template(app.template.address.row),
+
         events: {
             "click .delete": "delete"
         },
 
-        initialize: function(){
+        initialize: function() {
             this.model.on("remove", this.remove, this);
             this.render;
         },
 
         render: function() {
-            this.$el.html(_.template($("#address-row").html(), this.model.toJSON()));
+            this.$el.html(this.template(this.model.toJSON()));
             return this;
         },
 

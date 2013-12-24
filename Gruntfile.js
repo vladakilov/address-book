@@ -10,6 +10,7 @@ module.exports = function(grunt) {
         'app/js/router.js',
         'app/js/models/address.js',
         'app/js/collections/addressBook.js',
+        'app/js/templates/address.js',
         'app/js/views/addressIndex.js',
         'app/js/views/addressShow.js',
         'app/js/views/addressRow.js',
@@ -18,13 +19,11 @@ module.exports = function(grunt) {
         'app/js/app.js'
     ]
 
-
     // Configuration goes here
     grunt.initConfig({
 
         clean: [
-            "app/build/js",
-            "app/build/css"
+            "app/build"
         ],
 
         concat: {
@@ -54,6 +53,28 @@ module.exports = function(grunt) {
                 },
             },
         },
+
+        // useminPrepare: {
+        //     src: ['app/index.html'],
+        //     dest: 'app/build/index.html',
+        //     options: {
+        //         dest: 'app/build'
+        //     }
+        // }
+
+        // Copies files to places other tasks can use
+        copy: {
+            main: {
+                src: 'app/index.html',
+                dest: 'app/build/index.html'
+            },
+        },
+
+        // Performs rewrites based on rev and the useminPrepare configuration
+        usemin: {
+            html: ['app/build/index.html']
+        }
+
     });
 
     // Load plugins here
@@ -67,8 +88,19 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-usemin');
 
     // Define your tasks here
-    grunt.registerTask('default', ['clean', 'concat']);
-    grunt.registerTask('production', ['clean', 'uglify']);
+    grunt.registerTask('default', [
+        'clean',
+        'concat'
+    ]);
+
+    grunt.registerTask('production', [
+        'clean',
+        'concat',
+        'uglify',
+        'copy',
+        'usemin'
+    ]);
 };

@@ -19,69 +19,28 @@
             <div id="footer"></div>
         </div>
 
-        <script type="text/template" id="address-table">
-            <table>
-                <thead>
-                    <tr>
-                        <td>First Name</td>
-                        <td>Last Name</td>
-                        <td>Email</td>
-                        <td>Phone</td>
-                        <td>Edit</td>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
 
-        <script type="text/template" id="address-row">
-            <td><a href="#address/<%= id %>"><%= firstName %></a></td>
-            <td><%= lastName %></td>
-            <td><a href="mailto:<%= email %>"><%= email %></td>
-            <td><%= phone %></td>
-            <td><a href="#address/<%= id %>/edit">Edit</a></td>
-            <td><a href="#address/index" class="delete">Delete</a></td>
-        </script>
+        <!-- build:js js/app.js -->
+        <script src="js/router.js"></script>
+        <script src="js/models/address.js"></script>
+        <script src="js/collections/addressBook.js"></script>
+        <script src="js/templates/address.js"></script>
+        <script src="js/views/addressIndex.js"></script>
+        <script src="js/views/addressShow.js"></script>
+        <script src="js/views/addressRow.js"></script>
+        <script src="js/views/addressCreate.js"></script>
+        <script src="js/views/addressEdit.js"></script>
+        <script src="js/app.js"></script>
+        <!-- endbuild -->
 
-        <script type="text/template" id="address-single">
-            <p><span class="bold">First Name: </span> <span><%= firstName %></span></p>
-            <p><span class="bold">Last Name: </span> <span><%= lastName %></span></p>
-            <p><span class="bold">Email: </span> <span><%= email %></span></p>
-            <p><span class="bold">Phone: </span> <span><%= phone %></span></p>
-
-            <div>
-                <button class="address-delete" value="delete">Delete</button>
-            </div>
-        </script>
-
-        <script type="text/template" id="address-form">
-            <form>
-                <div>
-                    <input type="text" name="first-name" placeholder="First Name" value="<%= firstName %>"/>
-                </div>
-                <div>
-                    <input type="text" name="last-name" placeholder="Last Name" value="<%= lastName %>"/>
-                </div>
-                <div>
-                    <input type="text" name="email" placeholder="Email" value="<%= email %>"/>
-                </div>
-                <div>
-                    <input type="text" name="phone" placeholder="Phone" value="<%= phone %>"/>
-                </div>
-                <div>
-                    <button class="save" type="submit">Save</button> or
-                    <a href="#address/index">Cancel</a>
-                </div>
-            </form>
-        </script>
-
-        <script src="build/js/libs.js"></script>
-        <script src="build/js/app.js"></script>
         <script>
             $(document).ready(function() {
                 app.init();
             });
         </script>
+
     </body>
 </html>

@@ -4,14 +4,16 @@
 
     var addressEdit = Backbone.View.extend({
         tagName: "form",
-        
+
+        template: _.template(app.template.address.form),
+
         initialize: function(id) {
             this.address = app.addressBook.get(id);
             app.ui.$content.html(this.render().el);
         },
 
         render: function() {
-            this.$el.html(_.template($("#address-form").html(), this.address.toJSON()));
+            this.$el.html(this.template(this.address.toJSON()));
             return this;
         },
 

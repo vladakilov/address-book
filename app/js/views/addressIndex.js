@@ -8,6 +8,8 @@
 
         id: "address-list",
 
+        template: _.template(app.template.address.table),
+
         initialize: function() {
             app.ui.$content.html("");
             if (app.addressBook.length) {
@@ -17,7 +19,7 @@
         },
 
         render: function() {
-            this.$el.html($('#address-table').html());
+            this.$el.html(this.template);
             return this;
         },
 
