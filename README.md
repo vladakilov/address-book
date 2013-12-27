@@ -1,21 +1,18 @@
-address-book
-============
+Address Book App
+================
 
 Address Book made with backbone.js
 
 This is a simple application for an address book.
 
-Tools used:
-- Bower.js
-- Grunt.js
-- Backbone.js
+### Running locally
 
-To get this up and running:
---------------------------
-- Install node and npm
-- Run npm install - this will install all the packages listed in package.json including grunt.
+You will need node installed as a development dependency. See
+[node's site](http://nodejs.org/) for help with that.
 
-(Optional) If you want to use bower package manager.
-This step is not necessary, the app will still run with out this using cdn urls for libraries, frameworks, etc.
-- Install bower - npm install -g bower
-- bower install
+1. `npm install -g grunt-cli`
+3. `npm install -g bower`
+4. `npm install`
+5. Build - `grunt serve-dev` (To view all grunt tasks, open Gruntfile.js)
+6. To view in a browser - [http://localhost:9001/](http://localhost:9001)
+
