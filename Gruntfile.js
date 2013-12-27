@@ -1,9 +1,9 @@
 module.exports = function(grunt) {
 
     var libs = [
-        'bower_components/jquery/jquery.js',
-        'bower_components/underscore/underscore.js',
-        'bower_components/backbone/backbone.js'
+        'app/bower_components/jquery/jquery.js',
+        'app/bower_components/underscore/underscore.js',
+        'app/bower_components/backbone/backbone.js'
     ]
 
     var app = [
@@ -25,6 +25,23 @@ module.exports = function(grunt) {
         clean: [
             "app/build"
         ],
+
+        connect: {
+            dev: {
+                options: {
+                    keepalive: true,
+                    base: 'app',
+                    port: 9001
+                }
+            },
+            production: {
+                options: {
+                    keepalive: true,
+                    base: 'app/build',
+                    port: 9002
+                }
+            }
+        },
 
         concat: {
             basic_and_extras: {
@@ -81,6 +98,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -102,5 +120,15 @@ module.exports = function(grunt) {
         'uglify',
         'copy',
         'usemin'
+    ]);
+
+    grunt.registerTask('serve-dev', [
+        'default',
+        'connect:dev'
+    ]);
+
+    grunt.registerTask('serve-production', [
+        'production',
+        'connect:production'
     ]);
 };
