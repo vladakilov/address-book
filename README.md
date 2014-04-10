@@ -16,4 +16,3 @@ You will need node installed as a development dependency. See
 5. `bower install` 
 6. Build - `grunt serve-dev` (To view all grunt tasks, open Gruntfile.js)
 7. To view in a browser - [http://localhost:9001/](http://localhost:9001)
-
