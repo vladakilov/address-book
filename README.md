@@ -1,4 +1,4 @@
-Address Book App
+Address Book App [![Build Status](https://travis-ci.org/vladakilov/address-book.svg?branch=master)](https://travis-ci.org/vladakilov/address-book)
 ================
 
 Address Book made with backbone.js
