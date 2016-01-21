@@ -37,7 +37,7 @@ module.exports = function(grunt) {
             production: {
                 options: {
                     keepalive: true,
-                    base: 'app/build',
+                    base: 'app',
                     port: 9002
                 }
             }
@@ -55,8 +55,25 @@ module.exports = function(grunt) {
         uglify: {
             my_target: {
                 files: {
-                    'app/build/js/libs.js': libs,
-                    'app/build/js/app.js': app
+                    'app/dist/js/app.js': app
+                }
+            }
+        },
+
+        browserify: {
+            dist: {
+                options: {
+                    browserifyOptions: {
+                        debug: true
+                    },
+                    transform: [
+                        ["babelify", {
+                            presets: ["es2015"]
+                        }]
+                    ]
+                },
+                files: {
+                    "app/dist/app.js": ["app/js/app.js"]
                 }
             }
         },
@@ -69,27 +86,6 @@ module.exports = function(grunt) {
                     spawn: false,
                 },
             },
-        },
-
-        // useminPrepare: {
-        //     src: ['app/index.html'],
-        //     dest: 'app/build/index.html',
-        //     options: {
-        //         dest: 'app/build'
-        //     }
-        // }
-
-        // Copies files to places other tasks can use
-        copy: {
-            main: {
-                src: 'app/index.html',
-                dest: 'app/build/index.html'
-            },
-        },
-
-        // Performs rewrites based on rev and the useminPrepare configuration
-        usemin: {
-            html: ['app/build/index.html']
         }
 
     });
@@ -106,7 +102,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-browserify');
 
     // Define your tasks here
     grunt.registerTask('default', [
@@ -114,12 +110,14 @@ module.exports = function(grunt) {
         'concat'
     ]);
 
+    grunt.registerTask('babel', [
+        'browserify'
+    ]);
+
     grunt.registerTask('production', [
         'clean',
         'concat',
-        'uglify',
-        'copy',
-        'usemin'
+        'uglify'
     ]);
 
     grunt.registerTask('serve-dev', [

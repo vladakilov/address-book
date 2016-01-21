@@ -1,47 +1,46 @@
-// js/views/addressCreate.js
+import $ from 'jquery';
+import _ from 'underscore';
+import Backbone from 'backbone';
 
-(function(app) {
+import * as template from '../templates/address';
+import addressModel from '../models/addressModel';
 
-    var addressCreate = Backbone.View.extend({
-        tagName: "form",
+var addressCreate = Backbone.View.extend({
+    tagName: "form",
 
-        template: _.template(app.template.address.form),
+    template: _.template(template.address.form),
 
-        initialize: function() {
-            this.address = new app.model.address();
-            app.ui.$content.html(this.render().el);
-        },
+    initialize: function() {
+        this.address = new addressModel();
+        window.app.ui.$content.html(this.render().el);
+    },
 
-        render: function() {
-            this.$el.html(this.template(this.address.toJSON()));
-            return this;
-        },
+    render: function() {
+        this.$el.html(this.template(this.address.toJSON()));
+        return this;
+    },
 
-        events: {
-            "click button.save": "save"
-        },
+    events: {
+        "click button.save": "save"
+    },
 
-        save: function(event) {
-            event.stopPropagation();
-            event.preventDefault();
+    save: function(event) {
+        event.stopPropagation();
+        event.preventDefault();
 
-            var addressInfo = {
-                firstName: this.$el.find('input[name="first-name"]').val(),
-                lastName: this.$el.find('input[name="last-name"]').val(),
-                email: this.$el.find('input[name="email"]').val(),
-                phone: this.$el.find('input[name="phone"]').val(),
-                id: Math.floor(Math.random() * 100) + 1
-            };
+        var addressInfo = {
+            firstName: this.$el.find('input[name="first-name"]').val(),
+            lastName: this.$el.find('input[name="last-name"]').val(),
+            email: this.$el.find('input[name="email"]').val(),
+            phone: this.$el.find('input[name="phone"]').val(),
+            id: Math.floor(Math.random() * 100) + 1
+        };
 
-            this.address.set(addressInfo);
-            app.addressBook.add(this.address);
+        this.address.set(addressInfo);
+        window.app.addressBook.add(this.address);
 
-            window.location.hash = "address/index";
-        }
-    });
+        window.location.hash = "address/index";
+    }
+});
 
-    $.extend(app.view = app.view || {}, {
-        addressCreate: addressCreate
-    });
-
-}(window.app = window.app || {}));
+export default addressCreate;

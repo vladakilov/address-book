@@ -1,13 +1,9 @@
-// js/collections/addressBook.js
+import Backbone from 'backbone';
 
-(function(app) {
+import addressModel from '../models/addressModel';
 
-    var addressBook = Backbone.Collection.extend({
-        model: app.model.address
-    });
+var addressBook = Backbone.Collection.extend({
+    model: addressModel
+});
 
-    $.extend(app.collection = app.collection || {}, {
-        addressBook: addressBook
-    });
-
-}(window.app = window.app || {}));
+export default addressBook;

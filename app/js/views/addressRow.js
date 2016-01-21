@@ -1,38 +1,36 @@
-// js/views/addressRow.js
+import $ from 'jquery';
+import _ from 'underscore';
+import Backbone from 'backbone';
 
-(function(app) {
+import * as template from '../templates/address';
 
-    var addressRow = Backbone.View.extend({
+var addressRow = Backbone.View.extend({
 
-        tagName: "tr",
+    tagName: "tr",
 
-        template: _.template(app.template.address.row),
+    template: _.template(template.address.row),
 
-        events: {
-            "click .delete": "delete"
-        },
+    events: {
+        "click .delete": "delete"
+    },
 
-        initialize: function() {
-            this.model.on("remove", this.remove, this);
-            this.render;
-        },
+    initialize: function() {
+        this.model.on("remove", this.remove, this);
+        this.render;
+    },
 
-        render: function() {
-            this.$el.html(this.template(this.model.toJSON()));
-            return this;
-        },
+    render: function() {
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
+    },
 
-        delete: function() {
-            app.addressBook.remove(this.model);
-            if (!app.addressBook.length) {
-                $("#address-list").remove();
-            }
+    delete: function() {
+        window.app.addressBook.remove(this.model);
+        if (!window.app.addressBook.length) {
+            $("#address-list").remove();
         }
+    }
 
-    });
+});
 
-    $.extend(app.view = app.view || {}, {
-        addressRow: addressRow
-    });
-
-}(window.app = window.app || {}));
+export default addressRow;

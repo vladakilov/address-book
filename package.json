@@ -1,23 +1,27 @@
 {
-	"name": "addressbook",
-	"version": "0.0.0",
-	"description": "Address Book app built with backbone js",
-	"main": "app.js",
-	"author": "Vlad Akilov <vlad.akilov@gmail.com>",
-	"devDependencies": {
-		"grunt": "~0.4.0",
-		"grunt-contrib-concat": "~0.3.0",
-		"grunt-contrib-copy": "~0.4.1",
-		"grunt-contrib-connect": "~0.4.0",
-		"grunt-contrib-compass": "~0.6.0",
-		"grunt-contrib-clean": "~0.5.0",
-		"grunt-contrib-sass": "~0.5.1",
-		"grunt-contrib-cssmin": "~0.6.2",
-		"grunt-contrib-jshint": "~0.6.5",
-		"grunt-contrib-watch": "~0.5.3",
-		"grunt-contrib-compress": "~0.5.3",
-		"grunt-contrib-uglify": "~0.2.7",
-		"grunt-usemin": "~2.0.1"
-	},
-	"license": "BSD-2-Clause"
+  "name": "addressbook",
+  "version": "0.1.0",
+  "description": "Address Book app built with backbone js",
+  "main": "app.js",
+  "author": "Vlad Akilov <vlad.akilov@gmail.com>",
+  "devDependencies": {
+    "babelify": "^7.2.0",
+    "backbone": "^1.2.3",
+    "grunt": "~0.4.0",
+    "grunt-browserify": "^4.0.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compass": "~0.6.0",
+    "grunt-contrib-compress": "~0.5.3",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-connect": "~0.4.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-cssmin": "~0.6.2",
+    "grunt-contrib-jshint": "~0.6.5",
+    "grunt-contrib-sass": "~0.5.1",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-watch": "~0.5.3",
+    "jquery": "^2.2.0",
+    "underscore": "^1.8.3"
+  },
+  "license": "BSD-2-Clause"
 }

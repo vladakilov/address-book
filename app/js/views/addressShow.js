@@ -1,39 +1,37 @@
-// js/views/addressShow.js
+import $ from 'jquery';
+import _ from 'underscore';
+import Backbone from 'backbone';
 
-(function(app) {
+import * as template from '../templates/address';
 
-    var addressShow = Backbone.View.extend({
+var addressShow = Backbone.View.extend({
 
-        template: _.template(app.template.address.single),
+    template: _.template(template.address.single),
 
-        initialize: function(id) {
-            this.address = app.addressBook.get(id);
-            this.address.on('remove', this.remove, this);
-            app.ui.$content.html(this.render().el);
-        },
+    initialize: function(id) {
+        this.address = window.app.addressBook.get(id);
+        this.address.on('remove', this.remove, this);
+        window.app.ui.$content.html(this.render().el);
+    },
 
-        tagName: "div",
+    tagName: "div",
 
-        className: "address-single",
+    className: "address-single",
 
-        render: function() {
-            this.$el.html(this.template(this.address.toJSON()));
-            return this;
-        },
+    render: function() {
+        this.$el.html(this.template(this.address.toJSON()));
+        return this;
+    },
 
-        events: {
-            "click button.address-delete": "delete"
-        },
+    events: {
+        "click button.address-delete": "delete"
+    },
 
-        delete: function() {
-            app.addressBook.remove(this.address);
-            window.location.hash = "address/index";
-        }
+    delete: function() {
+        window.app.addressBook.remove(this.address);
+        window.location.hash = "address/index";
+    }
 
-    });
+});
 
-    $.extend(app.view = app.view || {}, {
-        addressShow: addressShow
-    });
-
-}(window.app = window.app || {}));
+export default addressShow;

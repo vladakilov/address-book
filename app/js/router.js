@@ -1,38 +1,41 @@
-// js/routers/router.js
+import Backbone from 'backbone';
 
-(function(app) {
+import addressIndex from './views/addressIndex';
+import addressCreate from './views/addressCreate';
+import addressShow from './views/addressShow';
+import addressEdit from './views/addressEdit';
 
-    app.router = Backbone.Router.extend({
-        routes: {
-            "address/index": "index",
-            "address/create": "create",
-            "address/:id": "show",
-            "address/:id/edit": "edit"
-        },
+var router = Backbone.Router.extend({
+    routes: {
+        "address/index"    : "index",
+        "address/create"   : "create",
+        "address/:id"      : "show",
+        "address/:id/edit" : "edit"
+    },
 
-        initialize: function() {
-            this.index();
-        },
+    initialize: function() {
+        this.index();
+    },
 
-        index: function() {
-            this.currentView = new app.view.addressIndex();
-        },
+    index: function() {
+        this.currentView = new addressIndex();
+    },
 
-        create: function() {
-            this.currentView = new app.view.addressCreate();
-        },
+    create: function() {
+        this.currentView = new addressCreate();
+    },
 
-        show: function(id) {
-            this.currentView = new app.view.addressShow({
-                id: id
-            });
-        },
+    show: function(id) {
+        this.currentView = new addressShow({
+            id: id
+        });
+    },
 
-        edit: function(id) {
-            this.currentView = new app.view.addressEdit({
-                id: id
-            });
-        }
-    });
+    edit: function(id) {
+        this.currentView = new addressEdit({
+            id: id
+        });
+    }
+});
 
-}(window.app = window.app || {}));
+export default router;
